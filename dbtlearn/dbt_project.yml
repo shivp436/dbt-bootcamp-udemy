@@ -31,5 +31,9 @@ flags:
 # directory as views. These settings can be overridden in the individual model
 # files using the `{{ config(...) }}` macro.
 models:
-  dbtlearn:
-    # Config indicated by + and applies to all files under models/example/
+  dbtlearn: # by default everything in this folder will be view
+    +materialized: view
+    dim: # by default everything in dim folder will be materialized as table
+      +materialized: table
+    src:
+      +materialized: ephemeral

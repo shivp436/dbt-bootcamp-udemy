@@ -1,0 +1,1 @@
+snowflake://SHIVP436DATABRICKS:a5tc8ncjSmTBRDY@uhkzirg-oe62795.snowflakecomputing.com/COMPUTE_WH/AIRBNB/RAW
