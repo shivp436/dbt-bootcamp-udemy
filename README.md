@@ -33,3 +33,10 @@
 - **snapshots:** scd type-2 tables, with all logic handled by dbt
   - kind of like an incremental table, with scd type-2 implementation
   - invalidate_hard_deletes = True: whenever a unique_id is deleted from source table, its dbt_valid_till_date is set to snapshot_date, without invalidate_hard_deletes it will not be detected, and the unique_id will continue to show as valid
+- **Tests**
+  - **singular:** SQL queries stored in /tests which are expected to return an empty result set
+    - declared in the tests/ folder
+  - **generic (built-in):** unique, not_null, accepted_values, relationships
+    - declared in the models/schema.yaml file
+  - can also declare custom tests, or import third party tests from dbt
+    - mainly macros are used here
