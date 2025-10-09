@@ -53,3 +53,5 @@
 - **Exposures:** configurations that point to external resources like reports and dashboards, they live in models/
 - **Expectations:**
   - dbt_expectations: a package with lot of expectation based tests
+- **Logging:** use {{ log(message)}} for logging, info=True to show it on screen
+- **Variables:** 2 types (jinja variables, dbt variables), check macros/variables.sql for more info
