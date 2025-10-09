@@ -19,4 +19,4 @@
 
 ##### Data Flow Architecture
 
-![Data Flow](./__resources/dataflow.svg)
+![Data Flow](./__resources/dataflow.png)
