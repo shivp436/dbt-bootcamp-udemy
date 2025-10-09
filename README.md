@@ -20,3 +20,15 @@
 ##### Data Flow Architecture
 
 ![Data Flow](./__resources/dataflow.png)
+
+#### Notes:
+
+- **Models:** objects (tables/views/ctes) which are created in dbt
+  - materialization: table/view/cte(ephemeral)/incremental
+  - incremental does not handle history change (the way snapshots(scd type-2) does)
+  - incremental is used for sources that do not change (scd type-0) eg: fact tables, fct_reviews
+- **Seeds:** small files which we want to use in dbt as source tables
+- **Sources:** tables which are not created in dbt, but are there in warehouse, and we want a way to easily refer then in dbt
+  - making a table into a source provides features such as source freshness
+- **snapshots:** scd type-2 tables, with all logic handled by dbt
+  - kind of like an incremental table, with scd type-2 implementation
