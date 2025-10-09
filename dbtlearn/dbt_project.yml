@@ -46,6 +46,7 @@ models:
       select: ["transform", "reporter"]
     +post-hook: # post-hook runs after a model/seed/snapshot is built, pre-hook is before
       - "INSERT INTO {{ target.schema }}.audit_log VALUES('{{ this }}', CURRENT_TIMESTAMP)"
+      # - "GRANT SELECT ON {{ this }} TO ROLE REPORTER"
     +materialized: view
     dim: # by default everything in dim folder will be materialized as table
       +materialized: table

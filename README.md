@@ -50,3 +50,6 @@
   - on-run-end: after execution of dbt (run/seed/snapshot)
   - post-hook: after a (model/seed/snapshot) is created
   - pre-hook: before a (model/seed/snapshot) is created
+- **Exposures:** configurations that point to external resources like reports and dashboards, they live in models/
+- **Expectations:**
+  - dbt_expectations: a package with lot of expectation based tests
