@@ -39,4 +39,14 @@
   - **generic (built-in):** unique, not_null, accepted_values, relationships
     - declared in the models/schema.yaml file
   - can also declare custom tests, or import third party tests from dbt
-    - mainly macros are used here
+    - mainly macros, custom tests are used here
+    - can also import macro or test from packages
+- **Documentation:** in yml files with actual dbt code or standalone markdown files
+  - dbt ships a lightweight documentation web server
+  - overview.md is used to customize the landing page
+  - special assets like images can be added to the project folder
+- **Hooks:** they run actions before or after a certain action (model/seed/snapshot) creation
+  - on-run-start: run a task when dbt (run/seed/snapshot) is started
+  - on-run-end: after execution of dbt (run/seed/snapshot)
+  - post-hook: after a (model/seed/snapshot) is created
+  - pre-hook: before a (model/seed/snapshot) is created

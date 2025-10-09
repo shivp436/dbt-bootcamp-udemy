@@ -16,6 +16,7 @@ test-paths: ["tests"]
 seed-paths: ["seeds"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
+asset-paths: ["assets"]
 
 clean-targets: # directories to be removed by `dbt clean`
   - "target"
@@ -30,8 +31,21 @@ flags:
 # In this example config, we tell dbt to build all models in the example/
 # directory as views. These settings can be overridden in the individual model
 # files using the `{{ config(...) }}` macro.
+
+# hooks
+on-run-start:
+  - "CREATE TABLE IF NOT EXISTS {{ target.schema }}.audit_log (
+    model_name STRING,
+    run_timestamp TIMESTAMP
+    )
+    "
+
 models:
   dbtlearn: # by default everything in this folder will be view
+    +grants: # runs after model/seed/snapshot creation, to grant access
+      select: ["transform", "reporter"]
+    +post-hook: # post-hook runs after a model/seed/snapshot is built, pre-hook is before
+      - "INSERT INTO {{ target.schema }}.audit_log VALUES('{{ this }}', CURRENT_TIMESTAMP)"
     +materialized: view
     dim: # by default everything in dim folder will be materialized as table
       +materialized: table
